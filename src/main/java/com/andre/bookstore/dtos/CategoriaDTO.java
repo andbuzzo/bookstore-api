@@ -2,6 +2,10 @@ package com.andre.bookstore.dtos;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.andre.bookstore.domain.Categoria;
 
 public class CategoriaDTO implements Serializable {
@@ -10,8 +14,15 @@ public class CategoriaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
+	
+	@NotEmpty(message = "Campo nome é requerido")
+	@Length(min = 3, max = 100, message = "O campo nome deve ter entre 3 e 100")
 	private String nome;
+	
+	@NotEmpty(message = "Campo descricao é requerido")
+	@Length(min = 3, max = 100, message = "O campo descricao deve ter entre 3 e 200")
 	private String descricao;
+	
 	public CategoriaDTO() {
 		super();
 		// TODO Auto-generated constructor stub
